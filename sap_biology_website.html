@@ -1,0 +1,1962 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sap Biology - Medical Entrance & Life Sciences Mentorship</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bio-green-primary: #1B5E20;
+      --bio-green-light: #2E7D32;
+      --bio-green-dark: #003300;
+      --bio-emerald-container: #E8F5E9;
+      --bio-emerald-border: #C8E6C9;
+      --bio-teal: #00796B;
+      --bio-teal-container: #E0F2F1;
+      --bio-gold: #F9A825;
+      --bio-bg: #FBFDF9;
+      --bio-surface: #FFFFFF;
+      --bio-text: #191C19;
+      --bio-muted: #526052;
+      --bio-border: #E0E7DC;
+      --bio-card-shadow: 0 4px 20px rgba(27, 94, 32, 0.08);
+      --bio-radius-sm: 8px;
+      --bio-radius-md: 14px;
+      --bio-radius-lg: 20px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    body {
+      background-color: var(--bio-bg);
+      color: var(--bio-text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1, h2, h3, h4, h5, .brand-font {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* Top Utility Bar */
+    .top-bar {
+      background: #0D330E;
+      color: #E8F5E9;
+      font-size: 0.85rem;
+      padding: 7px 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .top-bar a {
+      color: #A5D6A7;
+      margin-left: 14px;
+      font-weight: 500;
+    }
+
+    .top-bar a:hover {
+      text-decoration: underline;
+    }
+
+    /* Main Navigation Header */
+    header {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      border-bottom: 1px solid var(--bio-border);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 12px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo-block {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-badge {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--bio-green-primary), var(--bio-teal));
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      box-shadow: 0 4px 10px rgba(27, 94, 32, 0.25);
+    }
+
+    .logo-text h1 {
+      font-size: 1.35rem;
+      color: var(--bio-green-primary);
+      line-height: 1.1;
+    }
+
+    .logo-text span {
+      font-size: 0.75rem;
+      color: var(--bio-muted);
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .nav-links a {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--bio-muted);
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--bio-green-primary);
+    }
+
+    .btn-admin {
+      background: var(--bio-emerald-container);
+      color: var(--bio-green-primary);
+      border: 1px solid var(--bio-emerald-border);
+      padding: 8px 18px;
+      border-radius: 99px;
+      font-weight: 700;
+      font-size: 0.88rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .btn-admin:hover {
+      background: var(--bio-green-primary);
+      color: white;
+    }
+
+    /* Hero & Promotion Banner */
+    .hero-section {
+      max-width: 1200px;
+      margin: 24px auto;
+      padding: 0 20px;
+    }
+
+    .promo-banner {
+      background: linear-gradient(135deg, #0F4214, #1B5E20, #004D40);
+      color: white;
+      border-radius: var(--bio-radius-lg);
+      padding: 40px 36px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 12px 30px rgba(27, 94, 32, 0.2);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 24px;
+    }
+
+    .promo-banner::before {
+      content: "";
+      position: absolute;
+      top: -60px;
+      right: -60px;
+      width: 250px;
+      height: 250px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,255,255,0.12) 0%, rgba(255,255,255,0) 70%);
+      pointer-events: none;
+    }
+
+    .promo-content {
+      flex: 1 1 500px;
+      z-index: 1;
+    }
+
+    .promo-badge {
+      display: inline-block;
+      background: var(--bio-gold);
+      color: #211200;
+      font-size: 0.78rem;
+      font-weight: 800;
+      padding: 4px 12px;
+      border-radius: 99px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 12px;
+    }
+
+    .promo-title {
+      font-size: 2.2rem;
+      line-height: 1.2;
+      margin-bottom: 12px;
+      color: #FFFFFF;
+    }
+
+    .promo-subtitle {
+      font-size: 1.05rem;
+      color: #D7EAD7;
+      margin-bottom: 24px;
+      max-width: 600px;
+    }
+
+    .promo-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: #FFFFFF;
+      color: var(--bio-green-primary);
+      padding: 12px 26px;
+      border-radius: 99px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.2);
+    }
+
+    .btn-outline-white {
+      background: rgba(255,255,255,0.15);
+      color: white;
+      border: 1px solid rgba(255,255,255,0.4);
+      padding: 12px 24px;
+      border-radius: 99px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      cursor: pointer;
+      backdrop-filter: blur(6px);
+      transition: background 0.2s;
+    }
+
+    .btn-outline-white:hover {
+      background: rgba(255,255,255,0.25);
+    }
+
+    .promo-image-box {
+      flex: 0 0 320px;
+      height: 200px;
+      border-radius: var(--bio-radius-md);
+      overflow: hidden;
+      border: 3px solid rgba(255,255,255,0.3);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+      background: #0a270d;
+      position: relative;
+    }
+
+    .promo-image-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Section Styling */
+    section {
+      max-width: 1200px;
+      margin: 48px auto;
+      padding: 0 20px;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 32px;
+    }
+
+    .section-tag {
+      color: var(--bio-green-primary);
+      font-size: 0.85rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      display: inline-block;
+      margin-bottom: 6px;
+    }
+
+    .section-title {
+      font-size: 2rem;
+      color: var(--bio-text);
+      line-height: 1.25;
+    }
+
+    .section-subtitle {
+      color: var(--bio-muted);
+      font-size: 1rem;
+      margin-top: 8px;
+      max-width: 650px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* 2-PHOTOS SWIPEABLE GALLERY SECTION (User's Core Requirement) */
+    .gallery-container-box {
+      background: var(--bio-surface);
+      border: 1px solid var(--bio-border);
+      border-radius: var(--bio-radius-lg);
+      padding: 24px;
+      box-shadow: var(--bio-card-shadow);
+    }
+
+    .gallery-nav-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .gallery-title-box h3 {
+      font-size: 1.3rem;
+      color: var(--bio-green-primary);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .gallery-title-box p {
+      font-size: 0.88rem;
+      color: var(--bio-muted);
+    }
+
+    .gallery-controls {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .slide-page-badge {
+      background: var(--bio-emerald-container);
+      color: var(--bio-green-primary);
+      font-weight: 700;
+      padding: 6px 14px;
+      border-radius: 99px;
+      font-size: 0.85rem;
+    }
+
+    .btn-circle-nav {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 1px solid var(--bio-border);
+      background: white;
+      color: var(--bio-green-primary);
+      font-size: 1.1rem;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .btn-circle-nav:hover {
+      background: var(--bio-green-primary);
+      color: white;
+      border-color: var(--bio-green-primary);
+    }
+
+    /* 2 PHOTOS SIDE-BY-SIDE GRID */
+    .photos-pair-wrapper {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      min-height: 380px;
+      transition: opacity 0.3s ease;
+    }
+
+    @media (max-width: 768px) {
+      .photos-pair-wrapper {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .photo-card {
+      background: #FAFCF9;
+      border: 1px solid var(--bio-border);
+      border-radius: var(--bio-radius-md);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.25s, box-shadow 0.25s;
+      cursor: pointer;
+    }
+
+    .photo-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(27, 94, 32, 0.12);
+      border-color: var(--bio-green-light);
+    }
+
+    .photo-card-img-wrap {
+      width: 100%;
+      height: 250px;
+      position: relative;
+      background: #E8EDE6;
+      overflow: hidden;
+    }
+
+    .photo-card-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.35s ease;
+    }
+
+    .photo-card:hover .photo-card-img-wrap img {
+      transform: scale(1.04);
+    }
+
+    .photo-card-tag {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      background: rgba(27, 94, 32, 0.88);
+      color: white;
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 99px;
+      letter-spacing: 0.04em;
+      backdrop-filter: blur(4px);
+    }
+
+    .photo-card-content {
+      padding: 16px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .photo-card-content h4 {
+      font-size: 1.15rem;
+      color: var(--bio-text);
+      margin-bottom: 6px;
+    }
+
+    .photo-card-content p {
+      font-size: 0.88rem;
+      color: var(--bio-muted);
+      line-height: 1.45;
+    }
+
+    .photo-card-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 12px;
+      padding-top: 10px;
+      border-top: 1px dashed var(--bio-border);
+      font-size: 0.8rem;
+      color: var(--bio-green-primary);
+      font-weight: 600;
+    }
+
+    /* TEACHERS SECTION WITH DP & PROFILE */
+    .teachers-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+      gap: 22px;
+    }
+
+    .teacher-card {
+      background: var(--bio-surface);
+      border: 1px solid var(--bio-border);
+      border-radius: var(--bio-radius-md);
+      padding: 24px 20px;
+      box-shadow: var(--bio-card-shadow);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      position: relative;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .teacher-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 28px rgba(27, 94, 32, 0.12);
+      border-color: var(--bio-green-light);
+    }
+
+    .teacher-dp-wrap {
+      width: 96px;
+      height: 96px;
+      border-radius: 50%;
+      border: 3px solid var(--bio-green-primary);
+      padding: 3px;
+      background: white;
+      margin-bottom: 14px;
+      box-shadow: 0 4px 14px rgba(27, 94, 32, 0.18);
+      position: relative;
+    }
+
+    .teacher-dp-wrap img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .teacher-name {
+      font-size: 1.25rem;
+      color: var(--bio-green-primary);
+      margin-bottom: 2px;
+    }
+
+    .teacher-subject {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--bio-teal);
+      margin-bottom: 6px;
+    }
+
+    .teacher-exp-badge {
+      display: inline-block;
+      background: var(--bio-emerald-container);
+      color: var(--bio-green-primary);
+      font-size: 0.78rem;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 99px;
+      margin-bottom: 12px;
+    }
+
+    .teacher-intro {
+      font-size: 0.88rem;
+      color: var(--bio-muted);
+      line-height: 1.5;
+      margin-bottom: 16px;
+      flex: 1;
+    }
+
+    .btn-view-profile {
+      background: #F1F8F1;
+      color: var(--bio-green-primary);
+      border: 1px solid var(--bio-emerald-border);
+      padding: 8px 16px;
+      border-radius: 99px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      cursor: pointer;
+      width: 100%;
+      transition: all 0.2s;
+    }
+
+    .btn-view-profile:hover {
+      background: var(--bio-green-primary);
+      color: white;
+    }
+
+    /* FOUNDER / MENTORS SECTION */
+    .founders-box {
+      background: linear-gradient(135deg, #F3F8F2, #E8F5E9);
+      border: 1px solid var(--bio-emerald-border);
+      border-radius: var(--bio-radius-lg);
+      padding: 36px 30px;
+      margin-top: 40px;
+    }
+
+    .founder-card {
+      display: flex;
+      gap: 28px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .founder-dp-box {
+      flex: 0 0 130px;
+      height: 130px;
+      border-radius: 20px;
+      overflow: hidden;
+      border: 3px solid var(--bio-green-primary);
+      box-shadow: 0 6px 18px rgba(27, 94, 32, 0.2);
+    }
+
+    .founder-dp-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .founder-details {
+      flex: 1 1 350px;
+    }
+
+    .founder-badge {
+      background: var(--bio-green-primary);
+      color: white;
+      font-size: 0.75rem;
+      font-weight: 800;
+      padding: 4px 12px;
+      border-radius: 99px;
+      display: inline-block;
+      margin-bottom: 8px;
+    }
+
+    .founder-name {
+      font-size: 1.6rem;
+      color: var(--bio-green-primary);
+      margin-bottom: 4px;
+    }
+
+    .founder-role {
+      font-size: 0.95rem;
+      color: var(--bio-teal);
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .founder-bio {
+      color: var(--bio-muted);
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    /* COURSES GRID */
+    .courses-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 24px;
+    }
+
+    .course-card {
+      background: white;
+      border: 1px solid var(--bio-border);
+      border-radius: var(--bio-radius-md);
+      padding: 24px;
+      box-shadow: var(--bio-card-shadow);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      border-top: 4px solid var(--bio-green-primary);
+    }
+
+    .course-grade {
+      background: var(--bio-emerald-container);
+      color: var(--bio-green-primary);
+      font-weight: 800;
+      font-size: 0.8rem;
+      padding: 4px 12px;
+      border-radius: 99px;
+      display: inline-block;
+      margin-bottom: 12px;
+    }
+
+    .course-title {
+      font-size: 1.3rem;
+      color: var(--bio-text);
+      margin-bottom: 8px;
+    }
+
+    .course-desc {
+      font-size: 0.9rem;
+      color: var(--bio-muted);
+      margin-bottom: 16px;
+    }
+
+    .course-features {
+      list-style: none;
+      margin-bottom: 20px;
+    }
+
+    .course-features li {
+      font-size: 0.88rem;
+      color: var(--bio-text);
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .course-features li::before {
+      content: "✓";
+      color: var(--bio-green-primary);
+      font-weight: bold;
+    }
+
+    .course-time {
+      font-size: 0.82rem;
+      color: var(--bio-teal);
+      font-weight: 700;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* ONLINE EXAMINATION PORTAL (Interactive) */
+    .test-portal-box {
+      background: white;
+      border: 1px solid var(--bio-border);
+      border-radius: var(--bio-radius-lg);
+      padding: 32px;
+      box-shadow: var(--bio-card-shadow);
+    }
+
+    .test-header-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--bio-border);
+      margin-bottom: 24px;
+    }
+
+    .test-timer {
+      background: #FFF9C4;
+      color: #7F6000;
+      padding: 6px 14px;
+      border-radius: 99px;
+      font-weight: 800;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .question-card {
+      margin-bottom: 24px;
+      padding: 20px;
+      background: #F9FBF8;
+      border: 1px solid var(--bio-border);
+      border-radius: var(--bio-radius-md);
+    }
+
+    .question-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin-bottom: 14px;
+      color: var(--bio-text);
+    }
+
+    .options-list {
+      display: grid;
+      gap: 10px;
+    }
+
+    .option-label {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: white;
+      padding: 10px 16px;
+      border-radius: var(--bio-radius-sm);
+      border: 1px solid var(--bio-border);
+      cursor: pointer;
+      font-size: 0.92rem;
+      transition: all 0.2s;
+    }
+
+    .option-label:hover {
+      background: #F0F7EE;
+      border-color: var(--bio-green-light);
+    }
+
+    .option-label input[type="radio"] {
+      accent-color: var(--bio-green-primary);
+    }
+
+    .test-actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 14px;
+      margin-top: 24px;
+    }
+
+    .test-result-box {
+      display: none;
+      background: var(--bio-emerald-container);
+      border: 2px solid var(--bio-green-light);
+      border-radius: var(--bio-radius-md);
+      padding: 24px;
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    /* FOOTER */
+    footer {
+      background: #092109;
+      color: #D3E0D2;
+      padding: 48px 5% 24px;
+      margin-top: 60px;
+      border-top: 4px solid var(--bio-green-primary);
+    }
+
+    .footer-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 36px;
+      padding-bottom: 36px;
+      border-bottom: 1px solid #1c3b1c;
+    }
+
+    .footer-col h4 {
+      color: #FFFFFF;
+      font-size: 1.15rem;
+      margin-bottom: 16px;
+    }
+
+    .footer-col p, .footer-col li {
+      font-size: 0.9rem;
+      line-height: 1.6;
+      margin-bottom: 8px;
+    }
+
+    .footer-col a {
+      color: #A5D6A7;
+    }
+
+    .footer-bottom {
+      max-width: 1200px;
+      margin: 20px auto 0;
+      text-align: center;
+      font-size: 0.85rem;
+      color: #8da48c;
+    }
+
+    /* ========================================================= */
+    /* ADMIN PANEL MODAL WITH COMPREHENSIVE PHOTO UPLOAD OPTIONS */
+    /* ========================================================= */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.65);
+      z-index: 9999;
+      backdrop-filter: blur(5px);
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .modal-content {
+      background: white;
+      border-radius: var(--bio-radius-lg);
+      width: 100%;
+      max-width: 900px;
+      max-height: 90vh;
+      overflow-y: auto;
+      padding: 30px;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.25);
+      position: relative;
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--bio-border);
+      padding-bottom: 16px;
+      margin-bottom: 24px;
+    }
+
+    .modal-header h2 {
+      color: var(--bio-green-primary);
+      font-size: 1.6rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .btn-close-modal {
+      background: #F0F4EF;
+      border: none;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      font-size: 1.2rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+    }
+
+    .admin-tabs {
+      display: flex;
+      gap: 10px;
+      border-bottom: 2px solid var(--bio-border);
+      margin-bottom: 24px;
+      overflow-x: auto;
+      padding-bottom: 4px;
+    }
+
+    .admin-tab {
+      padding: 8px 18px;
+      background: none;
+      border: none;
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--bio-muted);
+      cursor: pointer;
+      border-bottom: 3px solid transparent;
+      margin-bottom: -6px;
+    }
+
+    .admin-tab.active {
+      color: var(--bio-green-primary);
+      border-bottom-color: var(--bio-green-primary);
+    }
+
+    .tab-panel {
+      display: none;
+    }
+
+    .tab-panel.active {
+      display: block;
+    }
+
+    .form-group {
+      margin-bottom: 18px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--bio-text);
+      margin-bottom: 6px;
+    }
+
+    .form-group input, .form-group textarea, .form-group select {
+      width: 100%;
+      padding: 10px 14px;
+      border: 1px solid var(--bio-border);
+      border-radius: var(--bio-radius-sm);
+      font-size: 0.95rem;
+      outline: none;
+    }
+
+    .form-group input:focus, .form-group textarea:focus {
+      border-color: var(--bio-green-primary);
+      box-shadow: 0 0 0 3px rgba(27, 94, 32, 0.12);
+    }
+
+    /* REUSABLE UPLOAD PHOTO PICKER COMPONENT */
+    .photo-upload-container {
+      background: #F8FAF7;
+      border: 2px dashed #B8D6B8;
+      border-radius: var(--bio-radius-md);
+      padding: 20px;
+      text-align: center;
+      margin-bottom: 18px;
+      position: relative;
+    }
+
+    .photo-upload-preview {
+      width: 120px;
+      height: 120px;
+      border-radius: 14px;
+      margin: 0 auto 12px;
+      object-fit: cover;
+      border: 2px solid var(--bio-green-primary);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      display: block;
+      background: #fff;
+    }
+
+    .photo-upload-preview.circular {
+      border-radius: 50%;
+    }
+
+    .btn-file-label {
+      background: var(--bio-green-primary);
+      color: white;
+      padding: 8px 18px;
+      border-radius: 99px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      box-shadow: 0 2px 8px rgba(27, 94, 32, 0.2);
+    }
+
+    .btn-file-label input[type="file"] {
+      display: none;
+    }
+
+    .upload-hint {
+      font-size: 0.78rem;
+      color: var(--bio-muted);
+      margin-top: 8px;
+    }
+
+    /* Preset selector */
+    .preset-row {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      margin-top: 10px;
+      flex-wrap: wrap;
+    }
+
+    .preset-chip {
+      background: white;
+      border: 1px solid var(--bio-border);
+      border-radius: 99px;
+      padding: 4px 12px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .preset-chip:hover {
+      background: var(--bio-emerald-container);
+      color: var(--bio-green-primary);
+    }
+
+    /* Toast Notification */
+    .toast {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: #1B5E20;
+      color: white;
+      padding: 12px 24px;
+      border-radius: 99px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+      z-index: 100000;
+      display: none;
+      animation: fadeIn 0.3s;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Announcement Bar -->
+  <div class="top-bar">
+    <div>
+      🌿 <strong>Sap Biology Institute</strong> — NEET 2026/2027 Admissions Open!
+    </div>
+    <div>
+      📞 Helpline: <strong>+91 98765 43210</strong>
+      <a href="#test-series">📝 Free Mock Test</a>
+      <a href="#contact">📍 Campus Patna</a>
+    </div>
+  </div>
+
+  <!-- Header & Navigation -->
+  <header>
+    <div class="nav-container">
+      <div class="logo-block">
+        <div class="logo-badge">🔬</div>
+        <div class="logo-text">
+          <h1 id="brandNameDisplay">Sap Biology</h1>
+          <span id="brandTaglineDisplay">Medical Entrance & Life Sciences</span>
+        </div>
+      </div>
+
+      <nav class="nav-links">
+        <a href="#home">Home</a>
+        <a href="#gallery">Moments Gallery</a>
+        <a href="#teachers">Faculty DP</a>
+        <a href="#courses">Courses</a>
+        <a href="#test-series">Objective Portal</a>
+        <a href="#founder">Mentors</a>
+        <button class="btn-admin" onclick="openAdminModal()">
+          ⚙️ Admin Panel & Photo Upload
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero & Promotion Banner -->
+  <section class="hero-section" id="home">
+    <div class="promo-banner" id="heroBanner">
+      <div class="promo-content">
+        <span class="promo-badge" id="heroBadge">ADMISSION OPEN</span>
+        <h2 class="promo-title" id="heroTitle">NEET 2027 Two-Year Foundation Batch</h2>
+        <p class="promo-subtitle" id="heroSubtitle">Target 360/360 in Biology | Daily DPPs, Smart Visual Notes, NCERT Line-by-Line Micro-Analysis & Regular Mock Tests.</p>
+        <div class="promo-actions">
+          <button class="btn-primary" onclick="scrollToSection('courses')">Explore Batches</button>
+          <button class="btn-outline-white" onclick="scrollToSection('test-series')">Take Objective Test</button>
+          <button class="btn-outline-white" onclick="openAdminModal('tab-promotions')">✏️ Edit Ad Banner & Thumbnail</button>
+        </div>
+      </div>
+      <div class="promo-image-box">
+        <img id="heroThumbnailImg" src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?w=800&auto=format&fit=crop&q=80" alt="Biology Lab Banner">
+      </div>
+    </div>
+  </section>
+
+  <!-- 2-PHOTOS SWIPEABLE GALLERY (User's Exact Need) -->
+  <section id="gallery">
+    <div class="section-header">
+      <span class="section-tag">Campus & Student Life</span>
+      <h2 class="section-title">2-Photo Side-by-Side Moments Gallery</h2>
+      <p class="section-subtitle">
+        Sir aur students ke saath lab experiments aur coaching moments. Do-do photo ek saath dekhein aur aage-peeche swap/slide karke saare photos explore karein!
+      </p>
+    </div>
+
+    <div class="gallery-container-box">
+      <div class="gallery-nav-bar">
+        <div class="gallery-title-box">
+          <h3>🔬 Biology Lab & Classroom Moments</h3>
+          <p>Trained by expert faculty with high-magnification compound microscopes & field specimens</p>
+        </div>
+        <div class="gallery-controls">
+          <span class="slide-page-badge" id="slideIndicator">Slide 1 of 3 (Photos 1-2)</span>
+          <button class="btn-circle-nav" onclick="prevSlide()" title="Previous 2 Photos">◀</button>
+          <button class="btn-circle-nav" onclick="nextSlide()" title="Next 2 Photos">▶</button>
+          <button class="btn-admin" style="margin-left: 10px;" onclick="openAdminModal('tab-gallery')">
+            📷 Upload Real Photo
+          </button>
+        </div>
+      </div>
+
+      <!-- 2 Photos Displayed Side by Side -->
+      <div class="photos-pair-wrapper" id="photosContainer">
+        <!-- Dynamic Photo Cards Injected via JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- TEACHERS / FACULTY WITH DP SECTION -->
+  <section id="teachers">
+    <div class="section-header">
+      <span class="section-tag">Dedicated Faculty</span>
+      <h2 class="section-title">Expert Biology Mentors</h2>
+      <p class="section-subtitle">Meet our renowned educators guiding pre-medical aspirants with 18+ years of dedicated experience.</p>
+    </div>
+
+    <div class="teachers-grid" id="teachersGrid">
+      <!-- Injected via JS with Real DP upload option -->
+    </div>
+  </section>
+
+  <!-- FOUNDER & CO-FOUNDER SPOTLIGHT -->
+  <section id="founder">
+    <div class="founders-box">
+      <div class="founder-card" id="founderCard">
+        <div class="founder-dp-box">
+          <img id="founderDpImg" src="https://images.unsplash.com/photo-1537368910025-700350fe46c7?w=400&auto=format&fit=crop&q=80" alt="Dr. S. K. Anand DP">
+        </div>
+        <div class="founder-details">
+          <span class="founder-badge">FOUNDER & CHIEF MENTOR</span>
+          <h3 class="founder-name" id="founderNameDisplay">Dr. S. K. Anand</h3>
+          <div class="founder-role" id="founderRoleDisplay">Founder & Chief Biology Mentor (18+ Yrs Experience)</div>
+          <p class="founder-bio" id="founderBioDisplay">
+            M.Sc., Ph.D. in Botany & Cell Biology. Over 18 years dedicated to guiding pre-medical aspirants to top ranks in NEET and AIIMS with deep conceptual clarity, hand-drawn biochemical cycle diagrams, and continuous personal mentorship.
+          </p>
+          <div style="margin-top: 14px;">
+            <button class="btn-admin" onclick="openAdminModal('tab-founder')">✏️ Edit Founder & Co-Founder DP</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COURSES SECTION -->
+  <section id="courses">
+    <div class="section-header">
+      <span class="section-tag">Target Batches</span>
+      <h2 class="section-title">Classroom & Pre-Medical Programs</h2>
+      <p class="section-subtitle">Structured courses covering 100% NCERT syllabus with daily problem sheets and high-yield test series.</p>
+    </div>
+
+    <div class="courses-grid" id="coursesGrid">
+      <!-- Injected via JS -->
+    </div>
+  </section>
+
+  <!-- OBJECTIVE ONLINE EXAMINATION PORTAL -->
+  <section id="test-series">
+    <div class="section-header">
+      <span class="section-tag">Interactive Examination</span>
+      <h2 class="section-title">NEET Pattern Objective Mock Test</h2>
+      <p class="section-subtitle">Real-time timed examination portal with instant answer review, negative marking analysis, and detailed faculty solutions.</p>
+    </div>
+
+    <div class="test-portal-box">
+      <div class="test-header-bar">
+        <div>
+          <h3 style="color: var(--bio-green-primary);">Paper 01: Cytology & Cell Division Master Test</h3>
+          <p style="font-size: 0.88rem; color: var(--bio-muted);">1 Mark each • Standard NEET Objective Pattern</p>
+        </div>
+        <div class="test-timer" id="testTimer">
+          ⏱ Time Left: 19:45
+        </div>
+      </div>
+
+      <form id="quizForm">
+        <div class="question-card">
+          <div class="question-title">1. Which stage of mitosis is characterized by the alignment of chromosomes at the equatorial plate?</div>
+          <div class="options-list">
+            <label class="option-label"><input type="radio" name="q1" value="A"> A) Prophase</label>
+            <label class="option-label"><input type="radio" name="q1" value="B"> B) Metaphase</label>
+            <label class="option-label"><input type="radio" name="q1" value="C"> C) Anaphase</label>
+            <label class="option-label"><input type="radio" name="q1" value="D"> D) Telophase</label>
+          </div>
+        </div>
+
+        <div class="question-card">
+          <div class="question-title">2. In paper chromatography of plant pigments, which pigment travels fastest and farthest on the chromatographic paper?</div>
+          <div class="options-list">
+            <label class="option-label"><input type="radio" name="q2" value="A"> A) Chlorophyll a</label>
+            <label class="option-label"><input type="radio" name="q2" value="B"> B) Chlorophyll b</label>
+            <label class="option-label"><input type="radio" name="q2" value="C"> C) Xanthophyll</label>
+            <label class="option-label"><input type="radio" name="q2" value="D"> D) Carotene</label>
+          </div>
+        </div>
+
+        <div class="question-card">
+          <div class="question-title">3. During DNA isolation from onion or banana tissue, what is the role of adding chilled ethanol?</div>
+          <div class="options-list">
+            <label class="option-label"><input type="radio" name="q3" value="A"> A) Denaturing proteins</label>
+            <label class="option-label"><input type="radio" name="q3" value="B"> B) Precipitating purified genomic DNA threads</label>
+            <label class="option-label"><input type="radio" name="q3" value="C"> C) Lyse the nuclear membrane</label>
+            <label class="option-label"><input type="radio" name="q3" value="D"> D) Staining nucleic acids</label>
+          </div>
+        </div>
+
+        <div class="test-actions">
+          <button type="button" class="btn-primary" onclick="submitTest()">Submit & View Score</button>
+        </div>
+      </form>
+
+      <div class="test-result-box" id="testResultBox">
+        <h3 style="color: var(--bio-green-primary); font-size: 1.4rem; margin-bottom: 8px;">🎉 Test Result: <span id="userScore">0</span> / 3</h3>
+        <p id="resultFeedback" style="font-size: 0.95rem; color: #0f3d13; margin-bottom: 12px;"></p>
+        <button class="btn-primary" onclick="resetTest()">Re-attempt Test</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT & LOCATION -->
+  <section id="contact">
+    <div class="founders-box" style="background: white; border: 1px solid var(--bio-border);">
+      <div style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 24px;">
+        <div style="flex: 1 1 350px;">
+          <span class="section-tag">Visit Our Institute</span>
+          <h3 style="font-size: 1.6rem; color: var(--bio-green-primary); margin-bottom: 10px;">Sap Biology Center</h3>
+          <p style="color: var(--bio-muted); margin-bottom: 14px;">
+            📍 Vidya Nagar, Opposite Science College Gate, Patna, Bihar - 800001<br>
+            📞 Phone: +91 98765 43210<br>
+            ✉️ Email: admissions@sapbiology.com
+          </p>
+          <button class="btn-primary" onclick="window.open('https://maps.google.com/?q=Patna+Science+College', '_blank')">Open in Google Maps</button>
+        </div>
+        <div style="flex: 1 1 350px;">
+          <h4 style="font-size: 1.15rem; color: var(--bio-text); margin-bottom: 12px;">Send Admission Inquiry</h4>
+          <input type="text" placeholder="Student Full Name" style="width: 100%; padding: 10px; margin-bottom: 10px; border: 1px solid var(--bio-border); border-radius: 6px;">
+          <input type="tel" placeholder="Mobile Number (WhatsApp)" style="width: 100%; padding: 10px; margin-bottom: 10px; border: 1px solid var(--bio-border); border-radius: 6px;">
+          <button class="btn-admin" style="width: 100%; justify-content: center;" onclick="showToast('Inquiry submitted! Our academic counselor will call you.')">Submit Inquiry</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4>🔬 Sap Biology</h4>
+        <p>Premium medical entrance preparation institute focused on deep botanical & zoological concepts, NCERT mastery, and personal student guidance.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Navigation</h4>
+        <p><a href="#home">Home</a></p>
+        <p><a href="#gallery">2-Photo Gallery</a></p>
+        <p><a href="#teachers">Faculty DPs</a></p>
+        <p><a href="#courses">Courses</a></p>
+        <p><a href="#test-series">Mock Examination</a></p>
+      </div>
+      <div class="footer-col">
+        <h4>Admin Features</h4>
+        <p><a href="javascript:void(0)" onclick="openAdminModal('tab-teachers')">Upload Teacher DP</a></p>
+        <p><a href="javascript:void(0)" onclick="openAdminModal('tab-promotions')">Upload Ad Banner</a></p>
+        <p><a href="javascript:void(0)" onclick="openAdminModal('tab-gallery')">Upload Lab Moments</a></p>
+        <p><a href="javascript:void(0)" onclick="openAdminModal('tab-founder')">Upload Founder DP</a></p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      © 2026 Sap Biology Institute. All rights reserved. Designed for Excellence in Medical Sciences.
+    </div>
+  </footer>
+
+  <!-- =================================================================== -->
+  <!-- MODAL: ADMIN CONTROL PANEL WITH INSTANT REAL PHOTO UPLOAD EVERYWHERE -->
+  <!-- =================================================================== -->
+  <div class="modal-overlay" id="adminModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>⚙️ Admin Control Panel & Photo Uploads</h2>
+        <button class="btn-close-modal" onclick="closeAdminModal()">✕</button>
+      </div>
+
+      <div class="admin-tabs">
+        <button class="admin-tab active" onclick="switchAdminTab('tab-teachers')">👨‍🏫 Teacher DPs</button>
+        <button class="admin-tab" onclick="switchAdminTab('tab-gallery')">📷 Lab & Moments Photos</button>
+        <button class="admin-tab" onclick="switchAdminTab('tab-promotions')">📢 Promo Ad Banner</button>
+        <button class="admin-tab" onclick="switchAdminTab('tab-founder')">🎓 Founder & Mentors</button>
+      </div>
+
+      <!-- TAB 1: TEACHER DPs -->
+      <div class="tab-panel active" id="tab-teachers">
+        <h3 style="color: var(--bio-green-primary); margin-bottom: 8px;">Upload & Edit Teacher Profile DPs</h3>
+        <p style="font-size: 0.88rem; color: var(--bio-muted); margin-bottom: 20px;">
+          Choose any teacher, click "Upload Real Photo" from your mobile gallery or computer, and it instantly updates everywhere!
+        </p>
+
+        <div class="form-group">
+          <label>Select Teacher to Edit DP:</label>
+          <select id="teacherSelect" onchange="loadTeacherInAdmin()">
+            <!-- Dynamic Options -->
+          </select>
+        </div>
+
+        <div class="photo-upload-container">
+          <img id="adminTeacherPreview" class="photo-upload-preview circular" src="" alt="Teacher DP Preview">
+          <label class="btn-file-label">
+            📁 Choose Photo from Device
+            <input type="file" accept="image/*" onchange="handleFileUpload(event, 'teacher')">
+          </label>
+          <div class="upload-hint">Supported formats: JPG, PNG, WEBP. Select real photos from your phone or PC.</div>
+          <div class="preset-row">
+            <span class="preset-chip" onclick="applyPresetTeacher('https://images.unsplash.com/photo-1537368910025-700350fe46c7?w=400&auto=format&fit=crop&q=80')">Doctor Male</span>
+            <span class="preset-chip" onclick="applyPresetTeacher('https://images.unsplash.com/photo-1594824813576-928646b9a846?w=400&auto=format&fit=crop&q=80')">Doctor Female</span>
+            <span class="preset-chip" onclick="applyPresetTeacher('https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=400&auto=format&fit=crop&q=80')">Professor</span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Teacher Full Name:</label>
+          <input type="text" id="adminTeacherName">
+        </div>
+        <div class="form-group">
+          <label>Specialization / Subject:</label>
+          <input type="text" id="adminTeacherSubject">
+        </div>
+        <div class="form-group">
+          <label>Short Bio / Intro:</label>
+          <textarea id="adminTeacherBio" rows="3"></textarea>
+        </div>
+
+        <button class="btn-primary" style="width: 100%;" onclick="saveTeacherAdmin()">💾 Save Teacher Details & DP</button>
+      </div>
+
+      <!-- TAB 2: LAB & MOMENTS PHOTOS (2-photo swipeable gallery) -->
+      <div class="tab-panel" id="tab-gallery">
+        <h3 style="color: var(--bio-green-primary); margin-bottom: 8px;">Upload Student & Lab Photos (Gallery)</h3>
+        <p style="font-size: 0.88rem; color: var(--bio-muted); margin-bottom: 20px;">
+          Add real photos of teachers with students, science experiments, or coaching events. They appear in pairs in the 2-photo swipeable gallery.
+        </p>
+
+        <div class="photo-upload-container">
+          <img id="adminGalleryPreview" class="photo-upload-preview" src="https://images.unsplash.com/photo-1579154204601-01588f351e67?w=600&auto=format&fit=crop&q=80" alt="Moment Preview">
+          <label class="btn-file-label">
+            📸 Upload New Photo from Gallery
+            <input type="file" accept="image/*" onchange="handleFileUpload(event, 'gallery')">
+          </label>
+          <div class="upload-hint">Upload real photos taken with students or in laboratory sessions.</div>
+          <div class="preset-row">
+            <span class="preset-chip" onclick="applyPresetGallery('https://images.unsplash.com/photo-1532094349884-543bc11b234d?w=600&auto=format&fit=crop&q=80', 'Compound Microscope Lab', 'Students observing cells')">Microscope Lab</span>
+            <span class="preset-chip" onclick="applyPresetGallery('https://images.unsplash.com/photo-1582719471384-894fbb16e074?w=600&auto=format&fit=crop&q=80', 'Teacher with Students', 'Mentoring batch session')">Faculty & Students</span>
+            <span class="preset-chip" onclick="applyPresetGallery('https://images.unsplash.com/photo-1530497610245-94d3c16cda28?w=600&auto=format&fit=crop&q=80', 'Botanical Plant Specimens', 'Analyzing leaf epidermal tissue')">Botany Specimens</span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Photo Title:</label>
+          <input type="text" id="adminPhotoTitle" placeholder="e.g. Mitosis Cell Division Demonstration">
+        </div>
+        <div class="form-group">
+          <label>Tag / Category:</label>
+          <input type="text" id="adminPhotoTag" placeholder="e.g. Cytology Lab or Student Interaction">
+        </div>
+        <div class="form-group">
+          <label>Caption / Description:</label>
+          <textarea id="adminPhotoCaption" rows="2" placeholder="e.g. Students analyzing stomatal peel under 400x magnification with faculty"></textarea>
+        </div>
+
+        <button class="btn-primary" style="width: 100%;" onclick="saveNewGalleryPhoto()">➕ Add Photo to 2-Photo Gallery</button>
+      </div>
+
+      <!-- TAB 3: PROMOTIONS AD BANNER -->
+      <div class="tab-panel" id="tab-promotions">
+        <h3 style="color: var(--bio-green-primary); margin-bottom: 8px;">Upload Promotion Ad Banner & Thumbnail</h3>
+        <p style="font-size: 0.88rem; color: var(--bio-muted); margin-bottom: 20px;">
+          Update the hero banner title, admission tag, and upload real promo poster thumbnails.
+        </p>
+
+        <div class="photo-upload-container">
+          <img id="adminBannerPreview" class="photo-upload-preview" src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?w=800&auto=format&fit=crop&q=80" alt="Banner Thumbnail">
+          <label class="btn-file-label">
+            🖼️ Upload Ad Banner Thumbnail
+            <input type="file" accept="image/*" onchange="handleFileUpload(event, 'banner')">
+          </label>
+        </div>
+
+        <div class="form-group">
+          <label>Ad Tag / Badge:</label>
+          <input type="text" id="adminBannerBadge" value="ADMISSION OPEN">
+        </div>
+        <div class="form-group">
+          <label>Banner Headline:</label>
+          <input type="text" id="adminBannerTitle" value="NEET 2027 Two-Year Foundation Batch">
+        </div>
+        <div class="form-group">
+          <label>Subtitle / Details:</label>
+          <textarea id="adminBannerSubtitle" rows="2">Target 360/360 in Biology | Daily DPPs, Smart Visual Notes, NCERT Line-by-Line Micro-Analysis & Regular Mock Tests.</textarea>
+        </div>
+
+        <button class="btn-primary" style="width: 100%;" onclick="saveBannerAdmin()">💾 Save Ad Banner & Thumbnail</button>
+      </div>
+
+      <!-- TAB 4: FOUNDER & CO-FOUNDER -->
+      <div class="tab-panel" id="tab-founder">
+        <h3 style="color: var(--bio-green-primary); margin-bottom: 8px;">Founder & Co-Founder Profile & DP</h3>
+        <p style="font-size: 0.88rem; color: var(--bio-muted); margin-bottom: 20px;">
+          Update founder photo DP, name, qualifications, and institute details.
+        </p>
+
+        <div class="photo-upload-container">
+          <img id="adminFounderPreview" class="photo-upload-preview" src="https://images.unsplash.com/photo-1537368910025-700350fe46c7?w=400&auto=format&fit=crop&q=80" alt="Founder DP">
+          <label class="btn-file-label">
+            📷 Upload Founder Profile DP
+            <input type="file" accept="image/*" onchange="handleFileUpload(event, 'founder')">
+          </label>
+        </div>
+
+        <div class="form-group">
+          <label>Founder Full Name:</label>
+          <input type="text" id="adminFounderName" value="Dr. S. K. Anand">
+        </div>
+        <div class="form-group">
+          <label>Designation & Role:</label>
+          <input type="text" id="adminFounderRole" value="Founder & Chief Biology Mentor (18+ Yrs Experience)">
+        </div>
+        <div class="form-group">
+          <label>Biography & Background:</label>
+          <textarea id="adminFounderBio" rows="4">M.Sc., Ph.D. in Botany & Cell Biology. Over 18 years dedicated to guiding pre-medical aspirants to top ranks in NEET and AIIMS with deep conceptual clarity, hand-drawn biochemical cycle diagrams, and continuous personal mentorship.</textarea>
+        </div>
+
+        <button class="btn-primary" style="width: 100%;" onclick="saveFounderAdmin()">💾 Save Founder Profile & DP</button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Toast Notification element -->
+  <div class="toast" id="toast">Changes Saved Successfully!</div>
+
+  <!-- JavaScript for Interactive Gallery, Photo Uploads & LocalStorage Persistence -->
+  <script>
+    // Initial Seed Data
+    const defaultData = {
+      banner: {
+        badge: "ADMISSION OPEN",
+        title: "NEET 2027 Two-Year Foundation Batch",
+        subtitle: "Target 360/360 in Biology | Daily DPPs, Smart Visual Notes, NCERT Line-by-Line Micro-Analysis & Regular Mock Tests.",
+        image: "https://images.unsplash.com/photo-1532094349884-543bc11b234d?w=800&auto=format&fit=crop&q=80"
+      },
+      founder: {
+        name: "Dr. S. K. Anand",
+        role: "Founder & Chief Biology Mentor (18+ Yrs Experience)",
+        bio: "M.Sc., Ph.D. in Botany & Cell Biology. Over 18 years dedicated to guiding pre-medical aspirants to top ranks in NEET and AIIMS with deep conceptual clarity, hand-drawn biochemical cycle diagrams, and continuous personal mentorship.",
+        image: "https://images.unsplash.com/photo-1537368910025-700350fe46c7?w=400&auto=format&fit=crop&q=80"
+      },
+      teachers: [
+        {
+          id: 1,
+          name: "Dr. S. K. Anand",
+          subject: "Cytology, Genetics & Plant Physiology",
+          experience: "18+ Years Experience",
+          intro: "Renowned botany author; mentored 120+ top 1000 NEET rankers with deep visual clarity.",
+          image: "https://images.unsplash.com/photo-1537368910025-700350fe46c7?w=400&auto=format&fit=crop&q=80"
+        },
+        {
+          id: 2,
+          name: "Prof. Ramesh Verma",
+          subject: "Human Physiology & Anatomy",
+          experience: "14+ Years Experience",
+          intro: "Expert in circulatory, endocrine, and nervous systems; clinical diagrams specialist.",
+          image: "https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=400&auto=format&fit=crop&q=80"
+        },
+        {
+          id: 3,
+          name: "Dr. Ananya Sen",
+          subject: "Ecology, Evolution & Biotechnology",
+          experience: "11+ Years Experience",
+          intro: "Gold medalist in Life Sciences; specialist in recombinant DNA technology and NCERT.",
+          image: "https://images.unsplash.com/photo-1594824813576-928646b9a846?w=400&auto=format&fit=crop&q=80"
+        },
+        {
+          id: 4,
+          name: "Prof. K. N. Gupta",
+          subject: "Animal Kingdom & Biomolecules",
+          experience: "16+ Years Experience",
+          intro: "Master of zoological taxonomy, comparative anatomy, and metabolic pathways.",
+          image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400&auto=format&fit=crop&q=80"
+        }
+      ],
+      galleryPhotos: [
+        {
+          id: 1,
+          title: "Onion Root Tip Mitosis Squash",
+          tag: "Cytology Lab",
+          caption: "Class 11 students observing metaphase and anaphase chromosomes under high-power compound microscope.",
+          image: "https://images.unsplash.com/photo-1579154204601-01588f351e67?w=700&auto=format&fit=crop&q=80"
+        },
+        {
+          id: 2,
+          title: "Paper Chromatography of Chlorophyll",
+          tag: "Plant Physiology",
+          caption: "Separating photosynthetic pigments (Chlorophyll a, b, Carotenes) using petroleum ether solvent.",
+          image: "https://images.unsplash.com/photo-1532094349884-543bc11b234d?w=700&auto=format&fit=crop&q=80"
+        },
+        {
+          id: 3,
+          title: "DNA Isolation & Spooling Demonstration",
+          tag: "Biotechnology",
+          caption: "Precipitating genomic DNA threads using ice-cold ethanol after cellular lysis in front of pre-med batch.",
+          image: "https://images.unsplash.com/photo-1530497610245-94d3c16cda28?w=700&auto=format&fit=crop&q=80"
+        },
+        {
+          id: 4,
+          title: "Plasmolysis in Tradescantia Epidermis",
+          tag: "Cell Osmosis",
+          caption: "Studying osmotic cell shrinkage and hypertonic response under 400x magnification.",
+          image: "https://images.unsplash.com/photo-1582719471384-894fbb16e074?w=700&auto=format&fit=crop&q=80"
+        },
+        {
+          id: 5,
+          title: "Human Blood Smear & Differential WBC",
+          tag: "Hematology",
+          caption: "Identifying neutrophils, lymphocytes, and blood platelets stained with Leishman stain.",
+          image: "https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?w=700&auto=format&fit=crop&q=80"
+        },
+        {
+          id: 6,
+          title: "Stomatal Peel Mount & Guard Cells",
+          tag: "Plant Anatomy",
+          caption: "Comparing stomatal frequency between dorsal and ventral epidermal surfaces of leaves.",
+          image: "https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?w=700&auto=format&fit=crop&q=80"
+        }
+      ],
+      courses: [
+        {
+          title: "Class 11 - NEET Foundation Batch",
+          grade: "Class 11",
+          desc: "Complete Class 11 Biology syllabus starting from Cell Biology to Plant & Human Physiology.",
+          features: ["NCERT Line-by-Line Micro Coverage", "Daily DPPs & Doubt Clearing Sessions", "Weekly Objective Sunday Tests", "Personal Mentor Guidance"],
+          time: "⏰ Mon to Fri • 4:00 PM - 6:00 PM"
+        },
+        {
+          title: "Class 12 Boards + NEET Intensive",
+          grade: "Class 12",
+          desc: "Targeting 100/100 in Board examinations along with 360/360 in NEET Biology section.",
+          features: ["Assertion-Reason Practice Drills", "Genetic Crosses & Molecular Biology Masterclasses", "Previous 15 Years NEET Papers", "Diagram & Flowchart Booklets"],
+          time: "⏰ Mon to Sat • 6:15 PM - 8:15 PM"
+        },
+        {
+          title: "NEET Dropper / Target Medical",
+          grade: "Repeaters / Droppers",
+          desc: "Speed, accuracy, and high-yield question practice designed specifically for gap-year aspirants.",
+          features: ["Rapid Revision Modules", "Full Syllabus Mock Tests (NTA Pattern)", "Error Analysis Notebook Tracking", "Bi-Weekly Faculty 1-on-1 Review"],
+          time: "⏰ Mon to Sat • 10:00 AM - 1:30 PM"
+        }
+      ]
+    };
+
+    // State initialized from localStorage or default
+    let appData = JSON.parse(localStorage.getItem('sap_biology_data')) || defaultData;
+
+    function saveAppData() {
+      localStorage.setItem('sap_biology_data', JSON.stringify(appData));
+    }
+
+    // 2-Photo Pager State
+    let currentSlide = 0;
+
+    function render2PhotoGallery() {
+      const container = document.getElementById('photosContainer');
+      const totalPairs = Math.ceil(appData.galleryPhotos.length / 2);
+      if (currentSlide >= totalPairs) currentSlide = totalPairs - 1;
+      if (currentSlide < 0) currentSlide = 0;
+
+      const startIndex = currentSlide * 2;
+      const pair = appData.galleryPhotos.slice(startIndex, startIndex + 2);
+
+      document.getElementById('slideIndicator').innerText =
+        `Slide ${currentSlide + 1} of ${totalPairs} (Photos ${startIndex + 1}-${Math.min(startIndex + 2, appData.galleryPhotos.length)})`;
+
+      container.innerHTML = pair.map(p => `
+        <div class="photo-card" onclick="openPhotoLightbox('${p.image}', '${p.title}', '${p.caption}')">
+          <div class="photo-card-img-wrap">
+            <span class="photo-card-tag">${p.tag}</span>
+            <img src="${p.image}" alt="${p.title}" loading="lazy">
+          </div>
+          <div class="photo-card-content">
+            <div>
+              <h4>${p.title}</h4>
+              <p>${p.caption}</p>
+            </div>
+            <div class="photo-card-footer">
+              <span>🔍 Click to View Full Image</span>
+              <span>Tap to Expand ↗</span>
+            </div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function nextSlide() {
+      const totalPairs = Math.ceil(appData.galleryPhotos.length / 2);
+      if (currentSlide < totalPairs - 1) {
+        currentSlide++;
+        render2PhotoGallery();
+      } else {
+        currentSlide = 0; // loop back to first
+        render2PhotoGallery();
+      }
+    }
+
+    function prevSlide() {
+      const totalPairs = Math.ceil(appData.galleryPhotos.length / 2);
+      if (currentSlide > 0) {
+        currentSlide--;
+        render2PhotoGallery();
+      } else {
+        currentSlide = totalPairs - 1; // loop to last
+        render2PhotoGallery();
+      }
+    }
+
+    // Touch Swipe gesture support on gallery
+    let touchStartX = 0;
+    let touchEndX = 0;
+    const galleryBox = document.getElementById('gallery');
+    galleryBox.addEventListener('touchstart', e => {
+      touchStartX = e.changedTouches[0].screenX;
+    });
+    galleryBox.addEventListener('touchend', e => {
+      touchEndX = e.changedTouches[0].screenX;
+      if (touchStartX - touchEndX > 50) {
+        nextSlide(); // swipe left -> next
+      } else if (touchEndX - touchStartX > 50) {
+        prevSlide(); // swipe right -> prev
+      }
+    });
+
+    // Render Teachers Grid
+    function renderTeachers() {
+      const grid = document.getElementById('teachersGrid');
+      grid.innerHTML = appData.teachers.map(t => `
+        <div class="teacher-card">
+          <div class="teacher-dp-wrap">
+            <img src="${t.image}" alt="${t.name} DP">
+          </div>
+          <h3 class="teacher-name">${t.name}</h3>
+          <div class="teacher-subject">${t.subject}</div>
+          <span class="teacher-exp-badge">${t.experience}</span>
+          <p class="teacher-intro">${t.intro}</p>
+          <button class="btn-view-profile" onclick="openAdminModal('tab-teachers')">✏️ Edit DP / Profile</button>
+        </div>
+      `).join('');
+
+      // Populate select dropdown in Admin
+      const select = document.getElementById('teacherSelect');
+      if (select) {
+        select.innerHTML = appData.teachers.map(t => `
+          <option value="${t.id}">${t.name} (${t.subject})</option>
+        `).join('');
+        loadTeacherInAdmin();
+      }
+    }
+
+    // Render Courses
+    function renderCourses() {
+      const grid = document.getElementById('coursesGrid');
+      grid.innerHTML = appData.courses.map(c => `
+        <div class="course-card">
+          <div>
+            <span class="course-grade">${c.grade}</span>
+            <h3 class="course-title">${c.title}</h3>
+            <p class="course-desc">${c.desc}</p>
+            <ul class="course-features">
+              ${c.features.map(f => `<li>${f}</li>`).join('')}
+            </ul>
+          </div>
+          <div>
+            <div class="course-time">${c.time}</div>
+            <button class="btn-primary" style="width: 100%; border-radius: 8px;" onclick="scrollToSection('contact')">Enroll in Batch</button>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    // Render Hero & Founder
+    function renderHeroAndFounder() {
+      document.getElementById('heroBadge').innerText = appData.banner.badge;
+      document.getElementById('heroTitle').innerText = appData.banner.title;
+      document.getElementById('heroSubtitle').innerText = appData.banner.subtitle;
+      document.getElementById('heroThumbnailImg').src = appData.banner.image;
+
+      document.getElementById('founderNameDisplay').innerText = appData.founder.name;
+      document.getElementById('founderRoleDisplay').innerText = appData.founder.role;
+      document.getElementById('founderBioDisplay').innerText = appData.founder.bio;
+      document.getElementById('founderDpImg').src = appData.founder.image;
+    }
+
+    // Lightbox for photos
+    function openPhotoLightbox(imgUrl, title, caption) {
+      alert(`📷 ${title}\n\n${caption}\n\nPhoto URL: ${imgUrl}`);
+    }
+
+    // Admin Modal Logic
+    function openAdminModal(tabId = 'tab-teachers') {
+      document.getElementById('adminModal').style.display = 'flex';
+      switchAdminTab(tabId);
+    }
+
+    function closeAdminModal() {
+      document.getElementById('adminModal').style.display = 'none';
+    }
+
+    function switchAdminTab(tabId) {
+      document.querySelectorAll('.admin-tab').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+
+      const targetTab = document.querySelector(`.admin-tab[onclick*="${tabId}"]`);
+      if (targetTab) targetTab.classList.add('active');
+
+      const targetPanel = document.getElementById(tabId);
+      if (targetPanel) targetPanel.classList.add('active');
+    }
+
+    // Load Teacher in Admin
+    function loadTeacherInAdmin() {
+      const select = document.getElementById('teacherSelect');
+      const teacherId = parseInt(select.value);
+      const teacher = appData.teachers.find(t => t.id === teacherId) || appData.teachers[0];
+
+      if (teacher) {
+        document.getElementById('adminTeacherPreview').src = teacher.image;
+        document.getElementById('adminTeacherName').value = teacher.name;
+        document.getElementById('adminTeacherSubject').value = teacher.subject;
+        document.getElementById('adminTeacherBio').value = teacher.intro;
+      }
+    }
+
+    // Handle Local File Upload using FileReader
+    let tempUploadedTeacherImg = null;
+    let tempUploadedGalleryImg = null;
+    let tempUploadedBannerImg = null;
+    let tempUploadedFounderImg = null;
+
+    function handleFileUpload(event, type) {
+      const file = event.target.files[0];
+      if (!file) return;
+
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const base64Data = e.target.result;
+        if (type === 'teacher') {
+          tempUploadedTeacherImg = base64Data;
+          document.getElementById('adminTeacherPreview').src = base64Data;
+        } else if (type === 'gallery') {
+          tempUploadedGalleryImg = base64Data;
+          document.getElementById('adminGalleryPreview').src = base64Data;
+        } else if (type === 'banner') {
+          tempUploadedBannerImg = base64Data;
+          document.getElementById('adminBannerPreview').src = base64Data;
+        } else if (type === 'founder') {
+          tempUploadedFounderImg = base64Data;
+          document.getElementById('adminFounderPreview').src = base64Data;
+        }
+        showToast("Photo loaded successfully! Click Save to apply.");
+      };
+      reader.readAsDataURL(file);
+    }
+
+    // Presets
+    function applyPresetTeacher(url) {
+      tempUploadedTeacherImg = url;
+      document.getElementById('adminTeacherPreview').src = url;
+    }
+    function applyPresetGallery(url, title, caption) {
+      tempUploadedGalleryImg = url;
+      document.getElementById('adminGalleryPreview').src = url;
+      document.getElementById('adminPhotoTitle').value = title;
+      document.getElementById('adminPhotoCaption').value = caption;
+    }
+
+    // Save Handlers
+    function saveTeacherAdmin() {
+      const teacherId = parseInt(document.getElementById('teacherSelect').value);
+      const teacher = appData.teachers.find(t => t.id === teacherId);
+      if (teacher) {
+        teacher.name = document.getElementById('adminTeacherName').value;
+        teacher.subject = document.getElementById('adminTeacherSubject').value;
+        teacher.intro = document.getElementById('adminTeacherBio').value;
+        if (tempUploadedTeacherImg) {
+          teacher.image = tempUploadedTeacherImg;
+        }
+        saveAppData();
+        renderTeachers();
+        showToast("Teacher DP & details updated!");
+      }
+    }
+
+    function saveNewGalleryPhoto() {
+      const title = document.getElementById('adminPhotoTitle').value || "Class & Lab Moment";
+      const tag = document.getElementById('adminPhotoTag').value || "Faculty & Students";
+      const caption = document.getElementById('adminPhotoCaption').value || "Biology experiment demonstration session.";
+      const image = tempUploadedGalleryImg || "https://images.unsplash.com/photo-1579154204601-01588f351e67?w=700&auto=format&fit=crop&q=80";
+
+      const newPhoto = {
+        id: Date.now(),
+        title: title,
+        tag: tag,
+        caption: caption,
+        image: image
+      };
+
+      appData.galleryPhotos.unshift(newPhoto); // add to top of gallery
+      saveAppData();
+      currentSlide = 0;
+      render2PhotoGallery();
+      showToast("Photo added to 2-Photo Gallery!");
+      closeAdminModal();
+    }
+
+    function saveBannerAdmin() {
+      appData.banner.badge = document.getElementById('adminBannerBadge').value;
+      appData.banner.title = document.getElementById('adminBannerTitle').value;
+      appData.banner.subtitle = document.getElementById('adminBannerSubtitle').value;
+      if (tempUploadedBannerImg) {
+        appData.banner.image = tempUploadedBannerImg;
+      }
+      saveAppData();
+      renderHeroAndFounder();
+      showToast("Promotion Banner updated!");
+    }
+
+    function saveFounderAdmin() {
+      appData.founder.name = document.getElementById('adminFounderName').value;
+      appData.founder.role = document.getElementById('adminFounderRole').value;
+      appData.founder.bio = document.getElementById('adminFounderBio').value;
+      if (tempUploadedFounderImg) {
+        appData.founder.image = tempUploadedFounderImg;
+      }
+      saveAppData();
+      renderHeroAndFounder();
+      showToast("Founder Profile & DP updated!");
+    }
+
+    // Mock Test Logic
+    function submitTest() {
+      let score = 0;
+      const q1 = document.querySelector('input[name="q1"]:checked')?.value;
+      const q2 = document.querySelector('input[name="q2"]:checked')?.value;
+      const q3 = document.querySelector('input[name="q3"]:checked')?.value;
+
+      if (!q1 || !q2 || !q3) {
+        alert("Please answer all questions before submitting.");
+        return;
+      }
+
+      if (q1 === "B") score++;
+      if (q2 === "D") score++;
+      if (q3 === "B") score++;
+
+      document.getElementById('userScore').innerText = score;
+      const feedback = document.getElementById('resultFeedback');
+      if (score === 3) {
+        feedback.innerText = "Outstanding! 100% Accuracy. Your conceptual cytology knowledge is NEET ready.";
+      } else if (score >= 2) {
+        feedback.innerText = "Good performance! Review chromatography solvent migration rules.";
+      } else {
+        feedback.innerText = "Need revision in Mitosis and Laboratory extraction protocols.";
+      }
+
+      document.getElementById('testResultBox').style.display = 'block';
+      showToast(`Test Submitted! Score: ${score}/3`);
+    }
+
+    function resetTest() {
+      document.getElementById('quizForm').reset();
+      document.getElementById('testResultBox').style.display = 'none';
+    }
+
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      toast.innerText = msg;
+      toast.style.display = 'block';
+      setTimeout(() => { toast.style.display = 'none'; }, 3000);
+    }
+
+    function scrollToSection(id) {
+      const el = document.getElementById(id);
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // Initialize Page
+    window.addEventListener('DOMContentLoaded', () => {
+      renderHeroAndFounder();
+      render2PhotoGallery();
+      renderTeachers();
+      renderCourses();
+    });
+  </script>
+</body>
+</html>
